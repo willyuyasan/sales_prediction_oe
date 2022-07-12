@@ -3,18 +3,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title class="text-center">Sales prediction by stores</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
+    crossorigin="anonymous">
     
   </head>
   <body>
     <div class="container">
          <h1>Prediccion de ventas por tiendas cada 30 minutos</h1>
     </div>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
-    crossorigin="anonymous">
-
+    
     <div id = "container2">
         <h2>Los parametros de calidad del modelo que generará esas predicciones son:</h2>
         <br>
@@ -33,8 +34,8 @@
 
                     <tbody id="items">
                         <tr>
-                            <td>Café</td>
-                            <td>1</td>
+                            <td>rmse</td>
+                            <td>14.46</td>
                         </tr>
                     </tbody>
                 </table>
@@ -96,6 +97,39 @@
             <img src="../outputs/Predictions_store5.png" width="800" height="300">
             <img src="../outputs/Predictions_store9.png" width="800" height="300">
         </div>
+
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Store</th>
+                <th scope="col">Fecha inicial</th>
+                <th scope="col">Fecha final</th>
+                <th scope="col">Cantidad observaciones</th>
+                <th scope="col">Min Ventas</th>
+                <th scope="col">Max Ventas</th>
+                <th scope="col">Promedio Ventas</th>
+                <th scope="col">Desvest Ventas</th>
+                </tr>
+            </thead>
+
+            <tbody id="items">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>1</td>
+                    <td>2022-01-10</td>
+                    <td>2022-01-25 23:30:00</td>
+                    <td>768</td>
+                    <td>5.95</td>
+                    <td>84.55</td>
+                    <td>41.22</td>
+                    <td>23.88</td>
+                </tr>
+            </tbody>
+        </table>
+
+        
     </div>
 
 
