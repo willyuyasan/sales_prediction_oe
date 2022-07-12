@@ -20,7 +20,7 @@ docker logs 1b4
 
 # Build and run a single container
 docker build -t pyapp ./data_science
-docker run -d -p 5000:5000 --name pyapp    
+docker run -d -p 5000:5000 --name python3 sales_prediction_oe_python_api   
 
 
 #Runs a query

@@ -10,7 +10,10 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./templates:/var/www/html
+      - ./app/templates:/var/www/html
+      - ./app/model_app:/var/www/html/model_app
+      - ./app/outputs/:/var/www/html/outputs
+      - ./app/outputs/Prediction_store1.png
     depends_on:
       - db
       - python_api
@@ -51,8 +54,9 @@ services:
           - 'pyapp_host'
 
 volumes:
-  data_science: {}
-  db_init: {}
+  templates: {}
+  model_app: {}
+  outputs: {}
   db: {}
 
 networks:
