@@ -10,7 +10,10 @@
          <h1>Prediccion de ventas por tiendas cada 30 minutos</h1>
     </div>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
+    crossorigin="anonymous">
 
     <div id = "container2">
         <h2>Los parametros de calidad del modelo que generará esas predicciones son:</h2>
@@ -44,6 +47,8 @@
     
     </div>
 
+    <br>
+
     <div id = "container3">
         <p>Por favor, ponga el archivo a predecir en la siguiente ruta:</p>
         <h4>\sales_prediction_oe\app\inputs</h4>
@@ -51,35 +56,34 @@
         <h4>dataset_prediction_AAAAMMDD</h4>
         <p>Los campos requeridos son:</p>
 
-        <div class="col-12 mb-2 col-md-4">
-            <table class="table2">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Columna</th>
-                    <th scope="col">Descripcion</th>
-                    </tr>
-                </thead>
-    
-                <tbody id="items">
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>date</td>
-                        <td>Las fechas para las que se desea una predicción (mm/dd/AAAA h:MM)</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Store</td>
-                        <td>Numero de la tienda (1,5,9)</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>q_prediction</td>
-                        <td>A donde van a quedar las predicciónes (este campo va vacio)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Columna</th>
+                <th scope="col">Descripcion</th>
+                </tr>
+            </thead>
+
+            <tbody id="items">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>date</td>
+                    <td>Las fechas para las que se desea una predicción (mm/dd/AAAA h:MM)</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Store</td>
+                    <td>Numero de la tienda (1,5,9)</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>q_predicted</td>
+                    <td>A donde van a quedar las predicciónes (este campo va vacio)</td>
+                </tr>
+            </tbody>
+        </table>
+
         
 
 
