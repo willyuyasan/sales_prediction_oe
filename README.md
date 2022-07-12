@@ -7,4 +7,5 @@
 
  - App and deliverable part, located on the "app" folder, where some of computational science is develop to build an application to implement the predict solution to a final user. The goal of this part is making the model usable for any user from html frontpage, and with this drop the operational charge of the data scientist with producing prediction
 
+--Author: William Uyasan
 
