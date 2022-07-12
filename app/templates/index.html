@@ -21,9 +21,7 @@
         <h4>Tiendas:</h4>
 
         <div class="row">
-
             <div class="col-12 mb-2 col-md-4">
-
                 <h5>Tienda 1</h5>
                 <table class="table">
                     <thead>
@@ -40,20 +38,16 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
-
         </div> 
-    
     </div>
 
-    <br>
-
     <div id = "container3">
+        <br>
         <p>Por favor, ponga el archivo a predecir en la siguiente ruta dentro del proyecto:</p>
         <h4>sales_prediction_oe\app\inputs</h4>
         <p>El archivo debe tener el nombre con la estructura:</p>
-        <h4>dataset_prediction_AAAAMMDD</h4>
+        <h4>dataset_prediction_AAAAMMDD.csv</h4>
         <p>Los campos requeridos son:</p>
 
         <table class="table">
@@ -83,13 +77,25 @@
                 </tr>
             </tbody>
         </table>
+    </div>
 
     <div id = "container4">
         <br>
         <h6>Cuando el archivo esté en posición, haga click en el siguiente boton para correr el 
             proceso de predicción:</h6>
-        
         <button class="btn btn-dark">Predecir</button>
+    </div>
+
+    <div id = "container5">
+        <h2>Prediccion generada con exito!</h2>
+        <p>A continuacion un resumen de la predicción:</p>
+
+        <br>
+        <div class="col-12 mb-2 col-md-4">
+            <img src="../outputs/Predictions_store1.png" width="800" height="300">
+            <img src="../outputs/Predictions_store5.png" width="800" height="300">
+            <img src="../outputs/Predictions_store9.png" width="800" height="300">
+        </div>
     </div>
 
 
