@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+
+  backend:
+    build:
+      context: ./app/db_init
+      dockerfile: Dockerfile
+    container_name: docker-backend_php
+    ports:
+      - "80:80"
+    volumes:
+      - ./templates:/var/www/html
+    depends_on:
+      - db
+      - python_api
+    networks:
+      app_network:
+        aliases:
+          - 'backend_host'
+
+  db:
+    image: mysql:8.0
+    container_name: docker-db_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "william"
+      MYSQL_DATABASE: forms
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - ./app/db_init:/docker-entrypoint-initdb.d
+      - ./app/db:/var/lib/mysql
+    networks:
+      app_network:
+        aliases:
+          - 'mysql_host'
+  
+  python_api:
+    build: 
+      context: ./app/model_app
+      dockerfile: Dockerfile
+    container_name: docker-python_api
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app/model_app:/usr/src/app
+    networks:
+      app_network:
+        aliases:
+          - 'pyapp_host'
+
+volumes:
+  data_science: {}
+  db_init: {}
+  db: {}
+
+networks:
+  app_network:
+    name: app_net
+    driver: bridge
+    ipam:
+      driver: default
+
+  
+
+
+  

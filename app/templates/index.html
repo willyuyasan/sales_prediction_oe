@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container">
-         <h1>Prediccion de ventas por tiendas cada 30 minutos</h1>
+         <h1>Prediccion de ventas por tiendas (cada 30 minutos)</h1>
     </div>
     
     <div id = "container2">
@@ -136,104 +136,7 @@
   </body>
 
   <template id="formulario">
-    <form class="form-group" method="post">
-
-        <label for="name" class="col-sm-2 col-form-label" style="font-size:23px">  Nombre: </label>
-        <input type="text" id="name" name="name" class="form-control col-sm-5 align-middle">
-        <br>
-        <label for="words" class="col-sm-2" style="font-size:23px">  Unas palabras: </label>
-        <textarea id="words" name="words" class="form-control col-sm-5 align-middle"></textarea>
-
-
-        <!--Radio buttons-->
-        <fieldset class="col-sm-2">
-            <legend style="font-size:23px">Genero:</legend>
-            <label>
-                <input type="radio" id ="genre" name="genre" value="h">
-                Hombre
-            </label>
-            <br>
-            <label>
-                <input type="radio" id ="genre" name="genre" value="m">
-                Mujer
-            </label>
-            <br>
-            <label>
-                <input type="radio" id ="genre" name="genre" value="nb">
-                No binario
-            </label>
-        </fieldset>
-
-        <!--selection box-->
-        <label for="age" class="col-sm-2 col-form-label" style="font-size:23px">Edad:</label>
-        <select id="age" name="age">
-            <option selected>--</option>
-            <option>18-23 años</option>
-            <option>23-30 años</option>
-            <option>30-40 años</option>
-            <option>40-50 años</option>
-            <option>50-70 años</option>
-            <option>Mas de 70 años</option>
-        </select>
-
-        <!--Radio buttons-->
-        <fieldset class="col-sm-2">
-            <legend style="font-size:23px">Situación laboral:</legend>
-            <label>
-                <input type="radio" id="labor_status" name="labor_status" value="1">
-                Empleado
-            </label>
-            <br>
-            <label>
-                <input type="radio" id="labor_status" name="labor_status" value="2">
-                Independiente
-            </label>
-            <br>
-            <label>
-                <input type="radio" id="labor_status" name="labor_status" value="9">
-                Desempleado
-            </label>
-        </fieldset>
-        <br>
-
-        <!--Checkbox-->
-        <label class="col-sm-10" style="font-size:30px">
-            <input type="checkbox" id = "check" name="check" class = "align-middle" style="transform: scale(1.8);">
-            Quiero saber mis probabilidades de ser feliz hoy!
-        </label>
-
-        <!--Submmit button-->
-        <br>
-        <br>
-        <button type="submit" class="btn btn-primary">Consultar</button>
-
-    </form>
+  
   </template>
-
-  <template id="feedback">
-    <h1> Hola </h1>
-    <p> su probabilidad de ser feliz el día de hoy es de:</p>
-    <h1> % </h1>
-
-    <br>
-    <p>Si no se siente asi, dejenos saber de 1 a 100 su nivel actual de felicidad</p>
-    <p>Tenga encuente que 1 es estar muy infeliz y 100 es lo más feliz que usted puede estar</p>
-
-    <!--<form action="." method="post">-->
-    <form>
-
-        <!--selection range-->
-        <label for="points">Felicidad (entre 0 and 100):</label>
-        <input size="150" type="range" id="points" name="real_happiness" min="0" max="100" step="1" value="0" onchange="rangeOutput.value=this.value" >
-        <output style="background-color:yellow;" name="rangeOutput"> 0 </output>
-
-        <!--Submmit button-->
-        <br>
-        <!--<input type="submit" value="Enviar" onclick="sendtest()">-->
-        <input type="submit" value="Enviar">
-
-    </form>
-
-    </template>
 
   <!--<script src="./main.js"></script>->

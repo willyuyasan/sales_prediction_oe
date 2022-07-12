@@ -1,0 +1,27 @@
+docker-compose up -d --force-recreate
+docker-compose ps
+docker-compose down
+
+docker network ls
+docker network inspect f58
+
+#Ingresa dentro de los contenedores y hace ping para probar networks
+docker exec -it 475 /bin/sh
+apt-get update
+apt-get install iputils-ping
+
+
+
+docker exec -it 09f bash
+
+#Shows the log of the container execution
+docker logs 1b4
+
+
+# Build and run a single container
+docker build -t pyapp ./data_science
+docker run -d -p 5000:5000 --name pyapp    
+
+
+#Runs a query
+docker exec de5 /bin/sh -c 'mysql -u root -pwilliam </docker-entrypoint-initdb.d/init.sql'
