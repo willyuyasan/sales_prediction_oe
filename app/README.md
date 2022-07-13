@@ -1,11 +1,11 @@
 # Application to generate automatically prediction
 
-This application uses the delivered model from the data science development and exposes it through an api, where an initial file of demanded prediction is given into a "inputs# folder and the results of applying the prediction process are placed into a folder of "outputs"
+This application uses the delivered model from the data science development and exposes it through an api, where an initial file of demanded prediction is given into a "inputs" folder and the results of applying the prediction process are placed into a "outputs" folder (both folder are inside the app folder of this project) 
 
 To replicate this solution it is important to:
 
 - Get intalled docker on the instance where the process will run
-- Download this project on the instance
+- Download this GitHub project on the instance
 - execute "docker-compose up -d" from the power shell located into the folder project
 - Go to http://localhost/
 
