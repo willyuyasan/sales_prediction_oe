@@ -45,9 +45,16 @@ import seaborn as sns
 
 # Defines the storage directories
 
-INPUT_DIR = os.getcwd() + '/data/'
-OUTPUT_DIR = os.getcwd() + '/results/'
-PREDS_DIR = os.getcwd() + '/predictions/'
+mycwd = os.getcwd()
+INPUT_DIR = os.getcwd() + '/app/inputs/' 
+PREDS_DIR = os.getcwd() + '/app/outputs/'
+OUTPUT_DIR = os.getcwd() + '/data_science/results/'
+
+os.chdir(mycwd)
+
+print(INPUT_DIR)
+print(PREDS_DIR)
+print(OUTPUT_DIR)
 
 
 # In[4]:
@@ -76,7 +83,7 @@ df_files
 
 #Importing the PREDICTION dataset
 
-FILE_NAME = 'dataset_predict.csv'
+FILE_NAME = df_files.iloc[0,0]
 df_input_02 = pd.read_csv(INPUT_DIR + FILE_NAME, encoding='latin-1', sep=',', dtype='str')
 #df_input_02['set_description'] = '2_PREDICTION'
 
