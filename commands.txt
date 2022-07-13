@@ -11,7 +11,6 @@ apt-get update
 apt-get install iputils-ping
 
 
-
 docker exec -it 09f bash
 
 #Shows the log of the container execution
