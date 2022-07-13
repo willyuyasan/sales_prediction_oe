@@ -13,7 +13,6 @@ services:
       - ./app/templates:/var/www/html
       - ./app/model_app:/var/www/html/model_app
       - ./app/outputs/:/var/www/html/outputs
-      - ./app/outputs/Prediction_store1.png
     depends_on:
       - db
       - python_api
@@ -48,6 +47,9 @@ services:
       - "5000:5000"
     volumes:
       - ./app/model_app:/usr/src/app
+      - ./data_science/results:/usr/src/app/data_science/results
+      - ./app/inputs:/usr/src/app/app/inputs
+      - ./app/outputs:/usr/src/app/app/outputs
     networks:
       app_network:
         aliases:

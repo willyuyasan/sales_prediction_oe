@@ -1,7 +1,10 @@
 const metrics_cards = document.getElementById('metrics_cards')
 const execution = document.getElementById('execution')
+const cont_results = document.getElementById('cont_results')
 
 const tp_metrics_card = document.getElementById('metrics_card').content
+const tp_pred_summary = document.getElementById('pred_summary').content
+const graphs_summary = document.getElementById('graphs_summary').content
 
 const fragment = document.createDocumentFragment()
 
@@ -45,9 +48,32 @@ async function fetch_model(signal) {
         })
 
         const data = await response.json()
-        show_preds_summary(data)
+        fetch_summary_preds(data)
     }
     catch(error){
         console.log('Error: ', error.message)
     }
+}
+
+const fetch_summary_preds = async (data) => {
+        const response = await fetch('./outputs/prediction_summary.json')
+        const data2 = await response.json()
+        if (data.prediction_process === 'Successfully'){
+        show_summaries(data2)
+        }
+}
+
+const show_summaries = data => {
+
+    execution.innerHTML = '<h5>Proceso finalizado!</h5>'
+    const clone = tp_pred_summary.cloneNode(true)
+    fragment.appendChild(clone)
+    cont_results.appendChild(fragment)
+    show_graphs()
+}
+
+const show_graphs = () => {
+    const clone = graphs_summary.cloneNode(true)
+    fragment.appendChild(clone)
+    cont_results.appendChild(fragment)
 }
