@@ -1,6 +1,6 @@
 # Application to generate automatically prediction
 
-This applications uses the delivered model from the data science development and exposes it through an api, where an initial file of demanded prediction is given into a "inputs# folder and the results of applying the prediction process are placed into a folder of "outputs"
+This application uses the delivered model from the data science development and exposes it through an api, where an initial file of demanded prediction is given into a "inputs# folder and the results of applying the prediction process are placed into a folder of "outputs"
 
 To replicate this solution it is important to:
 
