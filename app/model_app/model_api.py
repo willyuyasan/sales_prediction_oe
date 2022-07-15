@@ -1,4 +1,4 @@
-from IV_Generates_predictions import generates_predictions
+from IV_Generates_predictions import generates_predictions, db_use
 
 #Creating the API
 from flask import Flask, render_template, request
@@ -17,6 +17,7 @@ def results():
 
     if output['proceed']=='OK':
         #generates_predictions()
+        db_use()
         return {'prediction_process':'Successfully'}
     else:
         return {'prediction_process':'No success'}

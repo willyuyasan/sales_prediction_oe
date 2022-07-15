@@ -39,24 +39,23 @@ import seaborn as sns
 #sns.reset_orig
 #matplotlib.rc_file_defaults()
 
+# Defines the storage directories
+
+mycwd = os.getcwd()
+INPUT_DIR = os.getcwd() + '/app/inputs/' 
+PREDS_DIR = os.getcwd() + '/app/outputs/'
+OUTPUT_DIR = os.getcwd() + '/data_science/results/'
+
+os.chdir(mycwd)
+
+print(INPUT_DIR)
+print(PREDS_DIR)
+print(OUTPUT_DIR)
+
 
 # In[3]:
 
 def generates_predictions():
-
-    # Defines the storage directories
-
-    mycwd = os.getcwd()
-    INPUT_DIR = os.getcwd() + '/app/inputs/' 
-    PREDS_DIR = os.getcwd() + '/app/outputs/'
-    OUTPUT_DIR = os.getcwd() + '/data_science/results/'
-
-    os.chdir(mycwd)
-
-    print(INPUT_DIR)
-    print(PREDS_DIR)
-    print(OUTPUT_DIR)
-
 
     #List of files inner the input folder to choose the file to be predicted
 
@@ -306,6 +305,8 @@ def generates_predictions():
     #Export the predictions output
 
     df_store_01.to_csv(PREDS_DIR + OUTPUT_NAME1 + '.csv', encoding='Latin-1', index=False, sep=',')
+    df_store_01.to_pickle(PREDS_DIR + 'df_output.pkl')
+    print(df_store_01.shape)
 
     df_stores_summary.to_json(PREDS_DIR + 'prediction_summary.json',
                                 orient='records', 
@@ -317,8 +318,65 @@ def generates_predictions():
                                 compression='infer', index=True)
 
 
-        
-    print(df_store_01.shape)
-
 #generates_predictions()
-#python ./app/model_app/04_Generates_predictions.py
+#python ./app/model_app/IV_Generates_predictions.py
+
+
+# In[3]:
+
+def db_use():
+
+    #Connection to the DB
+    import mysql.connector
+    from mysql.connector import Error
+
+    #Call the analysis data frame
+    df_analysis = pd.read_pickle(PREDS_DIR + 'df_output.pkl')
+
+    try:
+        connection = mysql.connector.connect(host='db',
+                                            database='forms',
+                                            user='root',
+                                            password='william')
+        if connection.is_connected():
+            db_Info = connection.get_server_info()
+            print("Connected to MySQL Server version ", db_Info)
+            cursor = connection.cursor()
+            cursor.execute("select database();")
+            record = cursor.fetchone()
+            print("You're connected to database: ", record)
+
+            query1 = """CREATE TABLE IF NOT EXISTS sales_prediction (
+                                        date TEXT NOT NULL,
+                                        Store TEXT NOT NULL,
+                                        q_predicted VARCHAR(250) NOT NULL,
+                                        prediction_datetime TEXT NOT NULL  
+                                    )"""
+
+            result = cursor.execute(query1)
+
+            # Insert DataFrame recrds one by one.
+            query2 = """INSERT INTO sales_prediction(
+                date, 
+                q_predicted,
+                Store, 
+                prediction_datetime
+                ) VALUES(%s,%s,%s,%s)"""
+
+            for i,row in df_analysis.iterrows():
+                cursor.execute(query2, tuple(row))
+                connection.commit()
+
+            #df_analysis.to_sql(con=connection, name='sales_prediction', if_exists='append', index = False)
+            print("Records saved into the DB")
+
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+
+#db_use()
+#python ./app/model_app/IV_Generates_predictions.py

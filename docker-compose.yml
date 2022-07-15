@@ -17,14 +17,13 @@ services:
       - db
       - python_api
     networks:
-      app_network:
-        aliases:
-          - 'backend_host'
+      - app_network
 
   db:
     image: mysql:8.0
     container_name: docker-db_mysql
     environment:
+      MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: "william"
       MYSQL_DATABASE: forms
     ports:
@@ -34,9 +33,7 @@ services:
       - ./app/db_init:/docker-entrypoint-initdb.d
       - ./app/db:/var/lib/mysql
     networks:
-      app_network:
-        aliases:
-          - 'mysql_host'
+      - app_network
   
   python_api:
     build: 
@@ -50,10 +47,10 @@ services:
       - ./data_science/results:/usr/src/app/data_science/results
       - ./app/inputs:/usr/src/app/app/inputs
       - ./app/outputs:/usr/src/app/app/outputs
+    depends_on:
+      - db
     networks:
-      app_network:
-        aliases:
-          - 'pyapp_host'
+      - app_network
 
 volumes:
   templates: {}
@@ -63,10 +60,6 @@ volumes:
 
 networks:
   app_network:
-    name: app_net
-    driver: bridge
-    ipam:
-      driver: default
 
   
 

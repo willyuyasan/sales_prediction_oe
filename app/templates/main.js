@@ -4,6 +4,8 @@ const cont_results = document.getElementById('cont_results')
 
 const tp_metrics_card = document.getElementById('metrics_card').content
 const tp_pred_summary = document.getElementById('pred_summary').content
+const tp_pred_summary_items = document.getElementById('pred_summary_items').content
+
 const graphs_summary = document.getElementById('graphs_summary').content
 
 const fragment = document.createDocumentFragment()
@@ -52,6 +54,12 @@ async function fetch_model(signal) {
     }
     catch(error){
         console.log('Error: ', error.message)
+
+        execution.innerHTML = `
+        <h5>El proceso fallo!</h5> 
+        <h5>Pongase en contacto con el area de ciencia de datos</h5>
+        <h5>${error.message}</h5>
+        `
     }
 }
 
@@ -67,6 +75,23 @@ const show_summaries = data => {
 
     execution.innerHTML = '<h5>Proceso finalizado!</h5>'
     const clone = tp_pred_summary.cloneNode(true)
+
+    data.forEach(element => {
+        const clone2 = tp_pred_summary_items.cloneNode(true)
+        
+        clone2.querySelectorAll('td')[0].textContent = element.Store
+        clone2.querySelectorAll('td')[1].textContent = element.min_date
+        clone2.querySelectorAll('td')[2].textContent = element.max_date
+        clone2.querySelectorAll('td')[3].textContent = element.observations
+        clone2.querySelectorAll('td')[4].textContent = element.min_sales
+        clone2.querySelectorAll('td')[5].textContent = element.max_sales
+        clone2.querySelectorAll('td')[6].textContent = element.avg_sales
+        clone2.querySelectorAll('td')[7].textContent = element.std_sales
+
+        //console.log(clone2)
+        clone.getElementById('items').appendChild(clone2)
+    } )
+    
     fragment.appendChild(clone)
     cont_results.appendChild(fragment)
     show_graphs()
