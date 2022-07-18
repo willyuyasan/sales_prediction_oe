@@ -16,14 +16,15 @@ def results():
     print(output)
 
     if output['proceed']=='OK':
-        #generates_predictions()
+        file_name = generates_predictions()
         db_use()
-        return {'prediction_process':'Successfully'}
+        #file_name = 'dataset_predict_20220718200114.csv'
+        return {'prediction_process':'Successfully', 'file_name': file_name}
     else:
         return {'prediction_process':'No success'}
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port="5000",debug=True)
+    app.run(host="pythonapi",port="5000",debug=True)
 
 #python ./app/model_app/model_api.py
 #http://localhost:5000/sales_prediction

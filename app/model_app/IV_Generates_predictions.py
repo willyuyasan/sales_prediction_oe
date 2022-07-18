@@ -317,7 +317,7 @@ def generates_predictions():
                                 default_handler=None, lines=False, 
                                 compression='infer', index=True)
 
-
+    return OUTPUT_NAME1 + '.csv'
 #generates_predictions()
 #python ./app/model_app/IV_Generates_predictions.py
 

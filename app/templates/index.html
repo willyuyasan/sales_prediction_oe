@@ -9,6 +9,16 @@
     rel="stylesheet" 
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
     crossorigin="anonymous">
+
+    <style>
+        div.solid {
+            border-style: none solid none none;
+            margin: 10px;
+            padding: 10px;
+            right: 77%;
+            position: absolute;
+        }
+    </style>
     
   </head>
   <body>
@@ -64,9 +74,15 @@
 
     <div id = "execution">
         <br>
-        <h6>Cuando el archivo esté en posición, haga click en el siguiente boton para correr el 
-            proceso de predicción:</h6>
-        <button class="btn btn-dark">Predecir</button>
+        <h6>Por favor, seleccione el archivo cuando esté listo:</h6>
+
+        <form method="post" id="form_file_upload">
+            <label>Subir archivo .csv</label>
+            <br/>
+            <input type="file" name='myfile'>
+            <br/>
+            <button type="submit" class="btn btn-dark">Predecir</button>
+        </form>
     </div>
 
     <div id = "cont_results"></div>
@@ -75,7 +91,7 @@
 
   <template id="metrics_card">
     <div class="col-12 mb-2 col-md-4">
-        <h5>Tienda 1</h5>
+        <h5 class="text-center">Tienda 1</h5>
         <table class="table">
             <thead>
                 <tr>
@@ -99,6 +115,7 @@
                 </tr>
             </tbody>
         </table>
+
     </div>
   </template>
 
@@ -115,8 +132,7 @@
 
   <template id="pred_summary">
     <h2>Prediccion generada con exito!</h2>
-    <p>El archivo con las predicciones puede ser encontrado en la siguiente ruta dentro del proyecto:</p>
-    <h4>sales_prediction_oe\app\outputs</h4>
+    <a href download>Presione aqui para descargar</a>
         <p>A continuacion un resumen de la predicción:</p>
 
         <br>

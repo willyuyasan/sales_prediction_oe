@@ -9,6 +9,7 @@ docker network inspect f58
 docker exec -it 475 /bin/sh
 apt-get update
 apt-get install iputils-ping
+apt-get install telnet
 
 
 docker exec -it 09f bash
@@ -24,3 +25,31 @@ docker run -d -p 5000:5000 --name python3 sales_prediction_oe_python_api
 
 #Runs a query
 docker exec de5 /bin/sh -c 'mysql -u root -pwilliam </docker-entrypoint-initdb.d/init.sql'
+
+
+######################################################################################
+AWS
+
+sudo su
+apt update
+yum update
+sudo amazon-linux-extras install docker
+sudo service docker start
+sudo systemctl enable docker
+
+#Enables docker commands wihout sudo
+sudo usermod -a -G docker ec2-user
+
+#Close the shh terminal and reestart
+docker info
+
+#Installins docker-compose
+sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose version
+
+
+#Transfer the project to ec2 instance
+scp -r -i E:\WILLIAM\EJERCICIOS\open_english_test\models\sales_prediction_oe.ppk E:\WILLIAM\EJERCICIOS\sales_prediction_oe ec2-user@ec2-3-83-16-210.compute-1.amazonaws.com:/home/ec2-user
+
+pscp -i C:\path\my-key-pair.ppk C:\path\Sample_file.txt instance-user-name@instance-public-dns-name:/home/instance-user-name/Sample_file.txt

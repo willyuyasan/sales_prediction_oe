@@ -12,12 +12,13 @@ services:
     volumes:
       - ./app/templates:/var/www/html
       - ./app/model_app:/var/www/html/model_app
-      - ./app/outputs/:/var/www/html/outputs
+      - ./app/inputs:/var/www/html/inputs
+      - ./app/outputs:/var/www/html/outputs
     depends_on:
       - db
-      - python_api
+      - pythonapi
     networks:
-      - app_network
+      - appnetwork
 
   db:
     image: mysql:8.0
@@ -33,9 +34,9 @@ services:
       - ./app/db_init:/docker-entrypoint-initdb.d
       - ./app/db:/var/lib/mysql
     networks:
-      - app_network
+      - appnetwork
   
-  python_api:
+  pythonapi:
     build: 
       context: ./app/model_app
       dockerfile: Dockerfile
@@ -50,16 +51,10 @@ services:
     depends_on:
       - db
     networks:
-      - app_network
-
-volumes:
-  templates: {}
-  model_app: {}
-  outputs: {}
-  db: {}
+      - appnetwork
 
 networks:
-  app_network:
+  appnetwork:
 
   
 
