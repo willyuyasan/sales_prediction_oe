@@ -51,5 +51,39 @@ docker-compose version
 
 #Transfer the project to ec2 instance
 scp -r -i E:\WILLIAM\EJERCICIOS\open_english_test\models\sales_prediction_oe.ppk E:\WILLIAM\EJERCICIOS\sales_prediction_oe ec2-user@ec2-3-83-16-210.compute-1.amazonaws.com:/home/ec2-user
-
 pscp -i C:\path\my-key-pair.ppk C:\path\Sample_file.txt instance-user-name@instance-public-dns-name:/home/instance-user-name/Sample_file.txt
+
+
+#### Installation of aws cli
+### Download and install the aws cli on the computer
+### On a terminal after installation run:
+
+aws cli
+aws configure ## Here you pass keyID and password from AWS IAM (first configure into the aws console)
+
+### Be sure of having the rights permission of containerregistryfullaccess
+### Here should appear a json description
+aws ecr create-repository --repository-name sales_prediction_oe --region us-east-1
+
+### Check on the aws ecs console the repository
+
+aws ecr get-login-password --region us-east-1
+
+### aws ecr --region <region> | docker login -u AWS -p <encrypted_token> <repo_uri>
+
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/b4r6d0e6
+
+docker context create ecs myecscontext ##Creates the ecs context
+docker context use myecscontext ##ctivation of the context
+
+
+### Upload repositories to AWS
+docker build -t willyuyasan/php ./app/db_init
+docker build -t willyuyasan/python ./app/model_app
+docker build -t willyuyasan/php mysql:8.0
+
+
+
+
+
+
